@@ -15,72 +15,88 @@ import stdlib.List;
     有关更多具体信息，请参阅 Minecraft wiki。https://minecraft.fandom.com/wiki/Predicate
 */
 public class LycheeLocationPredicate {
-    private var data as MapData;
-    private var listdata as List<MapData>;
+    private var data as MapData = new MapData;
 
     public this() {
-        this.listdata = new List<MapData>();
-        this.data = {"predicate": new ListData(listdata)};
+
     }
     
     public this(data as MapData) {
-        this.listdata = new List<MapData>();
         this.data = data;
     }
 
-    public offset(offset as BlockPos) as LycheeLocationPredicate {
-        data.put("offsetX", offset.x);
-        data.put("offsetY", offset.y);
-        data.put("offsetZ", offset.z);
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
+    public biome(biome as string) as LycheeLocationPredicate {
+        data.put("biomes",biome as IData);
         return this;
     }
 
-    public biome(biome as string) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("biome", biome as IData);
-        this.listdata.add(data);
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
+    public biome(biomes as string[]) as LycheeLocationPredicate {
+        var biomeList = new List<IData>();
+        for biome in biomes {
+            biomeList.add(biome);
+        }
+        data.put("biomes",new ListData(biomeList));
         return this;
     }
 
     public dimension(dimension as string) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("dimension", dimension);
-        this.listdata.add(data);
+        data.put("dimension",dimension as IData);
         return this;
     }
 
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public block(block as LycheeBlock) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("block", block);
-        this.listdata.add(data);
+        data.put("block",block as IData);
         return this;
     }
 
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public fluid(fluid as LycheeBlock) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("fluid", fluid);
-        this.listdata.add(data);
+        data.put("fluid",fluid as IData);
         return this;
     }
 
     public light(light as IntBounds) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("light", light);
-        this.listdata.add(data);
+        data.put("light",{"light":light as IData});
+        return this;
+    }
+
+    public light(light as int) as LycheeLocationPredicate {
+        data.put("light",{"light":light});
         return this;
     }
 
     public smokey(isSmokey as bool) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("smokey", isSmokey);
-        this.listdata.add(data);
+        data.put("smokey",isSmokey as IData);
         return this;
     }
 
+    public canSeeSky(canSeeSky as bool) as LycheeLocationPredicate {
+        data.put("can_see_sky", canSeeSky as IData);
+        return this;
+    }
+
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public structure(structure as string) as LycheeLocationPredicate {
-        var data1 = new MapData();
-        data1.put("structure", structure);
-        this.listdata.add(data);
+        data.put("structures",structure as IData);
+        return this;
+    }
+
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
+    public structure(structures as string[]) as LycheeLocationPredicate {
+        var structureList = new List<IData>();
+        for structure in structures {
+            structureList.add(structure as IData);
+        }
+        data.put("structures",new ListData(structureList));
         return this;
     }
     /*
@@ -107,18 +123,12 @@ public class LycheeLocationPredicate {
         for k, v in position {
             posMap.put(k, v);
         }
-        var data1 = new MapData();
-        data1.put("position", posMap);
-        this.listdata.add(data1);
+        data.put("position",posMap as IData);
         return this;
-    }
-    
-    public build() as MapData {
-        return {"predicate": new ListData(listdata)};
     }
 
     public asData() as IData {
-        return {};
+        return data;
     }
     public implicit as IData => asData();
 }

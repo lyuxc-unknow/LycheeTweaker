@@ -93,8 +93,8 @@ public class LycheeConditions {
 
     public static xnor(condition1 as LycheeCondition, condition2 as LycheeCondition) as LycheeCondition => not(xor(condition1, condition2));
 
-    //True if the number of true inputs is odd.
-    //如果真实输入的数量为奇数，则为真。
+    // True if the number of true inputs is odd.
+    // 如果真实输入的数量为奇数，则为真。
     public static xor(conditions as LycheeCondition[]) as LycheeCondition {
         var out as LycheeCondition = xor(conditions[0], conditions[1]);
         if conditions.length < 3 return out;
@@ -142,7 +142,7 @@ public class LycheeConditions {
         "offsetX": offset.x,
         "offsetY": offset.y,
         "offsetZ": offset.z,
-        "predicate": predicate.build()
+        "predicate": predicate
     });
 
     public static itemCooldown(item as IIngredient) as LycheeCondition => new LycheeCondition("is_off_item_cooldown",item as IData);
@@ -163,8 +163,8 @@ public class LycheeConditions {
 
     
     public static difficulty(difficulties as int[]) as LycheeCondition {
-        //Have to add each value manually because java generics are weird
-        //由于 Java 泛型很奇怪，因此必须手动添加每个值
+        // Have to add each value manually because java generics are weird
+        // 由于 Java 泛型很奇怪，因此必须手动添加每个值
         var difficultyList = new List<int>();
         for difficulty in difficulties {
             difficultyList.add(difficulty);
@@ -192,17 +192,35 @@ public class LycheeConditions {
 
     public static isSneaking() as LycheeCondition => new LycheeCondition("is_sneaking", {});
 
+    // Allowed value for "direction": "up", "down", "north", "south", "east", "west", "side", "forward"
+    // 允许输入的"方向"数值: "up", "down", "north", "south", "east", "west", "side", "forward"
+    public static direction(dir as string) => new LycheeCondition("direction", {
+        "direction": dir
+    });
+
+    public static lootParameter(key as string) => new LycheeCondition("check_param", {
+        "key": key
+    });
+
+    public static skyDarkness(value as IntBounds,requireSkyLight as bool = false,canSeeSky as bool = false) => new LycheeCondition("sky_darken", {
+        "value": value,
+        "require_sky_light": requireSkyLight,
+        "can_see_sky": canSeeSky
+    });
+
     // =================================================== //
     // Custom conditions for easier Location Predicate use //
     //              自定义条件以便于使用位置谓词              //
     // =================================================== //
 
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public static biome(biome as string, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
         "offsetZ": offset.z,
         "predicate": {
-            "biome": biome
+            "biomes": biome
         }
     });
 
@@ -215,6 +233,8 @@ public class LycheeConditions {
         }
     });
 
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public static block(block as LycheeBlock, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
@@ -224,8 +244,10 @@ public class LycheeConditions {
         }
     });
 
-    //Doing stuff like <block:minecraft:water> is still valid!
-    //执行 <block:minecraft:water> 之类的操作仍然有效！
+    // Doing stuff like <block:minecraft:water> is still valid!
+    // 执行 <block:minecraft:water> 之类的操作仍然有效！
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public static fluid(fluid as LycheeBlock, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
@@ -240,7 +262,20 @@ public class LycheeConditions {
         "offsetY": offset.y,
         "offsetZ": offset.z,
         "predicate": {
-            "light": light
+            "light": {
+                "light":light
+            }
+        }
+    });
+
+    public static light(light as int, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
+        "offsetX": offset.x,
+        "offsetY": offset.y,
+        "offsetZ": offset.z,
+        "predicate": {
+            "light": {
+                "light":light
+            }
         }
     });
 
@@ -253,12 +288,14 @@ public class LycheeConditions {
         }
     });
 
+    // Network package recipe encoding failures that may trigger Lychee
+    // 可能会触发Lychee的网络包配方编码失败
     public static structure(structure as string, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
         "offsetZ": offset.z,
         "predicate": {
-            "structure": structure
+            "structures": structure
         }
     });
 
@@ -295,21 +332,5 @@ public class LycheeConditions {
                 "position": posMap
             }
         });
-    } 
-
-    //Allowed value for "direction": "up", "down", "north", "south", "east", "west", "side", "forward"
-    //允许输入的"方向"数值: "up", "down", "north", "south", "east", "west", "side", "forward"
-    public static direction(dir as string) => new LycheeCondition("direction", {
-        "direction": dir
-    });
-
-    public static lootParameter(key as string) => new LycheeCondition("check_param", {
-        "key": key
-    });
-
-    public static skyDarkness(value as IntBounds,requireSkyLight as bool = false,canSeeSky as bool = false) => new LycheeCondition("sky_darken", {
-        "value": value,
-        "require_sky_light": requireSkyLight,
-        "can_see_sky": canSeeSky
-    });
+    }
 }

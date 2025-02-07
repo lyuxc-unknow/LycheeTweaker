@@ -16,6 +16,7 @@ import crafttweaker.api.world.Container;
 */
 public class LycheeRecipeManager {
     public static addRecipe(name as string, recipeType as IRecipeManager<Recipe<Container>>, builder as LycheeRecipeBuilder) as void {
+        println(builder.getRecipe().toString());
         recipeType.addJsonRecipe(name, builder.getRecipe());
     }
 

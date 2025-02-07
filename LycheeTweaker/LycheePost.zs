@@ -68,7 +68,7 @@ public class LycheePosts {
         });
     }
 
-    public static random(entries as LycheePost[], min as int = 1, max as int = 1) as LycheePost {
+    public static random(entries as LycheePost[], min as int = 0, max as int = 1) as LycheePost {
         var entryList = new stdlib.List<IData>();
         for entry in entries {
             entryList.add(entry as IData);

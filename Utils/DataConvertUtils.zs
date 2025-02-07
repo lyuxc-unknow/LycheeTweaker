@@ -23,7 +23,6 @@ public class DataConvertUtils {
         for component in datacomponent.list {
             val resourceId = component.registryName.toString();
             val value = component.asIData();
-            if (resourceId in ["minecraft:max_stack_size","minecraft:lore","minecraft:enchantments","minecraft:repair_cost","minecraft:attribute_modifiers","minecraft:rarity"]) continue;
             datas.put(resourceId,value);
         }
 

@@ -38,3 +38,13 @@ LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting
     .post([LycheePosts.placeBlock(<block:minecraft:glass>), LycheePosts.executeCommand("particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 4")])
 );
 
+LycheeRecipeManager.addRecipe("testing", <recipetype:lychee:block_interacting>, new LycheeRecipeBuilder()
+    .itemIn(<item:minecraft:diamond>)
+    .blockIn(<block:minecraft:dirt>)
+    .condition(
+        [
+            LycheeConditions.light(15)
+        ]
+    )
+    .post(LycheePosts.placeBlock(<block:minecraft:redstone_block>))
+);

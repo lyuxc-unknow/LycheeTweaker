@@ -28,6 +28,9 @@ public class LycheeBlock {
             blockList.add(new StringData(block.registryName));
         }
         var mapData as MapData = {"blocks": new ListData(blockList)};
+        // 以防是流体方块
+        // 如果配方中没用到这个,则MC会自动忽略掉
+        mapData.put("fluids",new ListData(blockList));
         if(nbt != null) mapData.put("nbt", nbt);
         if(state != null) mapData.put("state", state.data);
 
