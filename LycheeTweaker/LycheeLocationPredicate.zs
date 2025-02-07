@@ -11,7 +11,7 @@ import stdlib.List;
 /*
     Vanilla syntax for Location Predicate, may migrate to not be specific to lychee in the future.
     Reference the Minecraft wiki for more specific info. https://minecraft.fandom.com/wiki/Predicate
-    位置谓词的原版语法将来可能会迁移到不再特定于荔枝。
+    原版语法的位置谓词将来可能会迁移到不再特定于Lychee。
     有关更多具体信息，请参阅 Minecraft wiki。https://minecraft.fandom.com/wiki/Predicate
 */
 public class LycheeLocationPredicate {
@@ -25,18 +25,14 @@ public class LycheeLocationPredicate {
         this.data = data;
     }
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public biome(biome as string) as LycheeLocationPredicate {
-        data.put("biomes",biome as IData);
+        data.put("biomes", biome);
         return this;
     }
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public biome(biomes as string[]) as LycheeLocationPredicate {
         var biomeList = new List<IData>();
-        for biome in biomes {
+        for biome in biomes { 
             biomeList.add(biome);
         }
         data.put("biomes",new ListData(biomeList));
@@ -48,15 +44,11 @@ public class LycheeLocationPredicate {
         return this;
     }
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public block(block as LycheeBlock) as LycheeLocationPredicate {
         data.put("block",block as IData);
         return this;
     }
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public fluid(fluid as LycheeBlock) as LycheeLocationPredicate {
         data.put("fluid",fluid as IData);
         return this;
@@ -82,15 +74,11 @@ public class LycheeLocationPredicate {
         return this;
     }
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public structure(structure as string) as LycheeLocationPredicate {
         data.put("structures",structure as IData);
         return this;
     }
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public structure(structures as string[]) as LycheeLocationPredicate {
         var structureList = new List<IData>();
         for structure in structures {

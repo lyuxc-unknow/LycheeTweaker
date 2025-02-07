@@ -15,6 +15,7 @@
     <recipetype:lychee:dripstone_dripping> //1.19+
 */
 
+import crafttweaker.api.util.math.BlockPos;
 
 //Toss brick into fire, get back nether brick
 LycheeRecipeManager.addRecipe("example_item_burning", <recipetype:lychee:item_burning>, new LycheeRecipeBuilder()
@@ -27,7 +28,7 @@ LycheeRecipeManager.addRecipe("example_item_burning", <recipetype:lychee:item_bu
 LycheeRecipeManager.addRecipe("sand_crush_nether_star", <recipetype:lychee:block_crushing>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:nether_star>)
     .crushingFallingBlock(<block:minecraft:sand>)
-    .post(LycheePosts.executeCommand("effect give @e[type=minecraft:player, distance=0..5] minecraft:wither 10 2"))
+    .post([LycheePosts.dropItem(<item:minecraft:iron_ingot>).condition(LycheeConditions.chance(0.5)),LycheePosts.executeCommand("effect give @e[type=minecraft:player, distance=0..5] minecraft:wither 10 2")])
 );
 
 //Turn sand into glass, in the nether while sneaking
@@ -41,10 +42,9 @@ LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting
 LycheeRecipeManager.addRecipe("testing", <recipetype:lychee:block_interacting>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:diamond>)
     .blockIn(<block:minecraft:dirt>)
-    .condition(
-        [
-            LycheeConditions.light(15)
-        ]
-    )
-    .post(LycheePosts.placeBlock(<block:minecraft:redstone_block>))
+    .post([
+        LycheePosts.dropItem(<item:minecraft:redstone_block>).condition(LycheeConditions.location(new LycheeLocationPredicate().biome("minecraft:plains"))),
+        LycheePosts.dropItem(<item:minecraft:iron_ingot>),
+        LycheePosts.custom("this_is_id",{target:"/item_in/0"}),
+    ])
 );

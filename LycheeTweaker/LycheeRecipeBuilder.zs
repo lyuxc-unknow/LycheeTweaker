@@ -41,23 +41,27 @@ public class LycheeRecipeBuilder {
     
     /*
         Add a condition to the recipe. See LycheeCondition.zs for more info.
+        Type alias: if
         为配方添加条件。请参阅 LycheeCondition.zs 了解更多信息。
+        类型别名：if
     */
     public condition(condition as LycheeCondition) as LycheeRecipeBuilder {
-        recipe.put("if", condition);
+        recipe.put("contextual", condition);
         return this;
     }
 
     /*
         Add multiple conditions to the recipe. See LycheeCondition.zs for more info.
+        Type alias: if
         为配方添加多个条件。请参阅 LycheeCondition.zs 了解更多信息。
+        类型别名：if
     */
     public condition(conditions as LycheeCondition[]) as LycheeRecipeBuilder {
         var conditionList = new List<IData>();
         for condition in conditions {
             conditionList.add(condition as IData);
         }
-        recipe.put("if", new ListData(conditionList));
+        recipe.put("contextual", new ListData(conditionList));
         return this;
     }
 
@@ -75,11 +79,33 @@ public class LycheeRecipeBuilder {
         为配方添加多个Post操作。请参阅 LycheePost.zs 了解更多信息。
     */
     public post(posts as LycheePost[]) as LycheeRecipeBuilder {
-        var postList = new stdlib.List<IData>();
+        var postList = new List<IData>();
         for post in posts {
             postList.add(post as IData);
         }
         recipe.put("post", new ListData(postList));
+        return this;
+    }
+
+    /*
+        Add a assembling action to the recipe
+        为配方添加一个Assembling操作
+    */
+    public assembling(assemblingAction as LycheePost) as LycheeRecipeBuilder {
+        recipe.put("assembling", assemblingAction);
+        return this;
+    }
+
+    /*
+        Add multiple assembling action to the recipe
+        为配方添加多个Assembling操作
+    */
+    public assembling(assemblingActions as LycheePost[]) as LycheeRecipeBuilder {
+        var postList = new List<IData>();
+        for post in assemblingActions {
+            postList.add(post as IData);
+        }
+        recipe.put("assembling", new ListData(postList));
         return this;
     }
 

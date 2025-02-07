@@ -213,8 +213,6 @@ public class LycheeConditions {
     //              自定义条件以便于使用位置谓词              //
     // =================================================== //
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public static biome(biome as string, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
@@ -233,8 +231,6 @@ public class LycheeConditions {
         }
     });
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public static block(block as LycheeBlock, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
@@ -246,8 +242,6 @@ public class LycheeConditions {
 
     // Doing stuff like <block:minecraft:water> is still valid!
     // 执行 <block:minecraft:water> 之类的操作仍然有效！
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public static fluid(fluid as LycheeBlock, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,
@@ -288,8 +282,6 @@ public class LycheeConditions {
         }
     });
 
-    // Network package recipe encoding failures that may trigger Lychee
-    // 可能会触发Lychee的网络包配方编码失败
     public static structure(structure as string, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,

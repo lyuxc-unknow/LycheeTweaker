@@ -49,7 +49,7 @@ public class LycheeBlock {
 
 /*
     Horrible implementation but whatever. Wraps blockstates, so all you gotta pass in is a BlockState. Also adds support for ranged state values.
-    实现得很糟糕，但没关系。包装块状态，所以你只需要传入一个块状态。还添加了对范围状态值的支持。
+    实现得很糟糕，但没关系。包装方块状态，所以你只需要传入一个块状态。还添加了对范围状态值的支持。
 */
 public class LycheeBlockState {
     private var data as MapData : get;

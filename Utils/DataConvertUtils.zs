@@ -23,6 +23,12 @@ public class DataConvertUtils {
         for component in datacomponent.list {
             val resourceId = component.registryName.toString();
             val value = component.asIData();
+            if (resourceId == "minecraft:lore" && value.asList().isEmpty) continue;
+            if (resourceId == "minecraft:max_stack_size" && value.asInt() in [1,2,4,8,16,32,64]) continue;
+            if (resourceId == "minecraft:attribute_modifiers" && value.asString() == "{modifiers: []}") continue;
+            if (resourceId == "minecraft:enchantments" && value.asString() == "{levels: {}}") continue;
+            if (resourceId == "minecraft:repair_cost" && value.asInt() == 0) continue;
+            if (resourceId == "minecraft:rarity" && value.asString() in ["\"common\"","\"uncommon\"","\"rare\"","\"epic\""]) continue;
             datas.put(resourceId,value);
         }
 
