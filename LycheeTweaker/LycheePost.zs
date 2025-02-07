@@ -118,10 +118,10 @@ public class LycheePosts {
         });
     }
 
-    public static hurt(bounds as DoubleBounds, source as string = null) as LycheePost {
+    public static hurt(bounds as DoubleBounds, source as string = "") as LycheePost {
         var map as MapData = {};
         map.put("damage",bounds);
-        if (source != null) map.put("source",sour);
+        if (source != "") map.put("source",source);
         return new LycheePost("hurt",map);
     }
 
