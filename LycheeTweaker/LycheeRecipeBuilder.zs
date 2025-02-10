@@ -254,8 +254,8 @@ public class LycheeRecipeBuilder {
         滴水石锥合成源头方块 （lychee:dripstone_dripping）
         NOTE: 允许使用 IFluidStack 作为输入(需要流体的IFluidStack注册名与流体方块的注册名称相同)
     */
-    public sourceBlock(fluid as LycheeFluid) as LycheeRecipeBuilder {
-        recipe.put("source_block", fluid);
+    public sourceBlock(inputFluid as IFluidStack) as LycheeRecipeBuilder {
+        recipe.put("source_block", inputFluid.registryName.toString());
         return this;
     }
     /*
@@ -272,8 +272,8 @@ public class LycheeRecipeBuilder {
         滴水石锥合成目标方块 （lychee:dripstone_dripping）
         NOTE: 允许使用 IFluidStack 作为输入(需要流体的IFluidStack注册名与流体方块的注册名称相同)
     */
-    public targetBlock(fluid as LycheeFluid) as LycheeRecipeBuilder {
-        recipe.put("target_block", fluid);
+    public targetBlock(inputFluid as IFluidStack) as LycheeRecipeBuilder {
+        recipe.put("target_block", inputFluid.registryName.toString());
         return this;
     }
 }
