@@ -12,14 +12,14 @@ import stdlib.List;
 import crafttweaker.api.data.StringData;
 
 /*
-    Lychee Blocks wrap Lychee's format for representing Blocks. You can pass in a block, a blockstate, and nbt.
-    Lychee Blocks 封装了 Lychee 的方块可以表示格式，可以传入方块、方块状态和 nbt。
+    Lychee Block wrap Lychee's format for representing Blocks. You can pass in a block, a blockstate, and nbt.
+    Lychee Block 封装了 Lychee 的方块可以表示格式，可以传入方块、方块状态和 nbt。
 */
 public class LycheeBlock {
     public var data as IData : get;
 
     public this(tag as KnownTag<Block>) {
-        data = "#" + tag.id;
+        data = {"blocks": "#" + tag.id};
     }
 
     public this(blocks as Block[], state as LycheeBlockState? = null, nbt as MapData? = null) {
@@ -28,11 +28,8 @@ public class LycheeBlock {
             blockList.add(new StringData(block.registryName));
         }
         var mapData as MapData = {"blocks": new ListData(blockList)};
-        // 以防是流体方块
-        // 如果配方中没用到这个,则MC会自动忽略掉
-        mapData.put("fluids",new ListData(blockList));
         if(nbt != null) mapData.put("nbt", nbt);
-        if(state != null) mapData.put("state", state.data);
+        if(state != null) mapData.put("state", state as MapData);
 
         data = mapData as IData;
     }

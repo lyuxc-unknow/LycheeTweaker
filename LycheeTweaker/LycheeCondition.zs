@@ -251,6 +251,15 @@ public class LycheeConditions {
         }
     });
 
+    public static fluid(fluid as LycheeFluid, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
+        "offsetX": offset.x,
+        "offsetY": offset.y,
+        "offsetZ": offset.z,
+        "predicate": {
+            "fluid": fluid
+        }
+    });
+
     public static light(light as IntBounds, offset as BlockPos = new BlockPos(0,0,0)) as LycheeCondition => new LycheeCondition("location", {
         "offsetX": offset.x,
         "offsetY": offset.y,

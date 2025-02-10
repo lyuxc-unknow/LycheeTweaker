@@ -10,9 +10,9 @@ import stdlib.List;
 
 /*
     Vanilla syntax for Location Predicate, may migrate to not be specific to lychee in the future.
-    Reference the Minecraft wiki for more specific info. https://minecraft.fandom.com/wiki/Predicate
+    Reference the Minecraft wiki for more specific info. https://zh.minecraft.wiki/w/Predicate
     原版语法的位置谓词将来可能会迁移到不再特定于Lychee。
-    有关更多具体信息，请参阅 Minecraft wiki。https://minecraft.fandom.com/wiki/Predicate
+    有关更多具体信息，请参阅 Minecraft wiki。https://zh.minecraft.wiki/w/Predicate
 */
 public class LycheeLocationPredicate {
     private var data as MapData = new MapData;
@@ -49,7 +49,7 @@ public class LycheeLocationPredicate {
         return this;
     }
 
-    public fluid(fluid as LycheeBlock) as LycheeLocationPredicate {
+    public fluid(fluid as LycheeFluid) as LycheeLocationPredicate {
         data.put("fluid",fluid as IData);
         return this;
     }

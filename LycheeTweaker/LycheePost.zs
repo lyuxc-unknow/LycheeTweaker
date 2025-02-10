@@ -142,7 +142,8 @@ public class LycheePosts {
             "radius_step": radiusStep
         });
     }
-
+    // If is a keyword of CraftTweaker, so use iif
+    // If是CraftTweaker的关键字，故使用iif
     public static iif(thenArray as LycheePost[],ielse as LycheePost[]) as LycheePost {
         var thenList = new List<IData>();
         var elseList = new List<IData>();
@@ -182,7 +183,9 @@ public class LycheePosts {
         "offsetZ": offset.z
     });
 
-    public static setItem(stack as IItemStack) => new LycheePost("set_item", DataConvertUtils.convertItemStack(stack));
+    public static setItem(stack as IItemStack) as LycheePost {
+        return new LycheePost("set_item", DataConvertUtils.convertItemStack(stack));
+    }
 
     public static custom(id as string,data as MapData = new MapData()) as LycheePost {
         var map as MapData = new MapData();

@@ -13,6 +13,7 @@
     <recipetype:lychee:block_clicking>
     <recipetype:lychee:random_block_ticking> //1.19+ 
     <recipetype:lychee:dripstone_dripping> //1.19+
+    <recipetype:lychee:crafting> //1.19+ Cannot be used directly, need to call LycheeRecipeManager.addAdvencedRecipe(...)
 */
 
 import crafttweaker.api.util.math.BlockPos;
@@ -28,7 +29,7 @@ LycheeRecipeManager.addRecipe("example_item_burning", <recipetype:lychee:item_bu
 LycheeRecipeManager.addRecipe("sand_crush_nether_star", <recipetype:lychee:block_crushing>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:nether_star>)
     .crushingFallingBlock(<block:minecraft:sand>)
-    .post([LycheePosts.dropItem(<item:minecraft:iron_ingot>).condition(LycheeConditions.chance(0.5)),LycheePosts.executeCommand("effect give @e[type=minecraft:player, distance=0..5] minecraft:wither 10 2")])
+    .post(LycheePosts.executeCommand("effect give @e[type=minecraft:player, distance=0..5] minecraft:wither 10 2"))
 );
 
 //Turn sand into glass, in the nether while sneaking
@@ -36,15 +37,18 @@ LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting
     .itemIn(<item:minecraft:fire_charge>)
     .blockIn(<block:minecraft:sand>)
     .condition([LycheeConditions.dimension("minecraft:the_nether"), LycheeConditions.isSneaking()])
-    .post([LycheePosts.placeBlock(<block:minecraft:glass>), LycheePosts.executeCommand("particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 4")])
+    .post([LycheePosts.placeBlock(<block:minecraft:glass>).condition(LycheeConditions.fluid(<tag:fluid:c:lava>,new BlockPos(0,1,0))), LycheePosts.executeCommand("particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 4")])
 );
 
-LycheeRecipeManager.addRecipe("testing", <recipetype:lychee:block_interacting>, new LycheeRecipeBuilder()
-    .itemIn(<item:minecraft:diamond>)
-    .blockIn(<block:minecraft:dirt>)
-    .post([
-        LycheePosts.dropItem(<item:minecraft:redstone_block>).condition(LycheeConditions.location(new LycheeLocationPredicate().biome("minecraft:plains"))),
-        LycheePosts.dropItem(<item:minecraft:iron_ingot>),
-        LycheePosts.custom("this_is_id",{target:"/item_in/0"}),
-    ])
+LycheeTags.fireImmune(<tag:item:c:sands>);
+LycheeTags.lightningImmune(<entitytype:minecraft:cat>);
+
+//Lychee的高级有序合成在1.21.1仍然有问题
+LycheeRecipeManager.addAdvencedRecipe(<item:minecraft:dirt>, [
+    [<item:minecraft:stone>,<item:minecraft:stone>,<item:minecraft:stone>],
+    [<item:minecraft:stone>,<item:minecraft:stone>,<item:minecraft:stone>],
+    [<item:minecraft:stone>,<item:minecraft:stone>,<item:minecraft:stone>]
+], new LycheeRecipeBuilder()
+    .comment("测试")
+    .assembling(LycheePosts.setItem(<item:minecraft:redstone>).target("/key/a"))
 );

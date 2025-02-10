@@ -88,8 +88,8 @@ public class LycheeRecipeBuilder {
     }
 
     /*
-        Add a assembling action to the recipe
-        为配方添加一个Assembling操作
+        Add a assembling action(actions that running before the result is displayed) to the recipe
+        为配方添加一个Assembling操作(在显示结果前的操作)
     */
     public assembling(assemblingAction as LycheePost) as LycheeRecipeBuilder {
         recipe.put("assembling", assemblingAction);
@@ -97,8 +97,8 @@ public class LycheeRecipeBuilder {
     }
 
     /*
-        Add multiple assembling action to the recipe
-        为配方添加多个Assembling操作
+        Add multiple assembling action(actions that running before the result is displayed) to the recipe
+        为配方添加多个Assembling操作(在显示结果前的操作)
     */
     public assembling(assemblingActions as LycheePost[]) as LycheeRecipeBuilder {
         var postList = new List<IData>();
@@ -254,8 +254,8 @@ public class LycheeRecipeBuilder {
         滴水石锥合成源头方块 （lychee:dripstone_dripping）
         NOTE: 允许使用 IFluidStack 作为输入(需要流体的IFluidStack注册名与流体方块的注册名称相同)
     */
-    public sourceBlock(fluid as IFluidStack) as LycheeRecipeBuilder {
-        recipe.put("source_block", fluid.registryName.toString());
+    public sourceBlock(fluid as LycheeFluid) as LycheeRecipeBuilder {
+        recipe.put("source_block", fluid);
         return this;
     }
     /*
@@ -272,8 +272,8 @@ public class LycheeRecipeBuilder {
         滴水石锥合成目标方块 （lychee:dripstone_dripping）
         NOTE: 允许使用 IFluidStack 作为输入(需要流体的IFluidStack注册名与流体方块的注册名称相同)
     */
-    public targetBlock(fluid as IFluidStack) as LycheeRecipeBuilder {
-        recipe.put("target_block", fluid.registryName.toString());
+    public targetBlock(fluid as LycheeFluid) as LycheeRecipeBuilder {
+        recipe.put("target_block", fluid);
         return this;
     }
 }
