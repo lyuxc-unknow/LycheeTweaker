@@ -43,12 +43,12 @@ LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting
 LycheeTags.fireImmune(<tag:item:c:sands>);
 LycheeTags.lightningImmune(<entitytype:minecraft:cat>);
 
-//Lychee的高级有序合成在1.21.1仍然有问题
-LycheeRecipeManager.addAdvencedRecipe(<item:minecraft:dirt>, [
-    [<item:minecraft:stone>,<item:minecraft:stone>,<item:minecraft:stone>],
-    [<item:minecraft:stone>,<item:minecraft:stone>,<item:minecraft:stone>],
-    [<item:minecraft:stone>,<item:minecraft:stone>,<item:minecraft:stone>]
+craftingTable.remove(<item:minecraft:coarse_dirt>);
+LycheeRecipeManager.addAdvencedRecipe(<item:minecraft:coarse_dirt>, [
+    [<item:minecraft:stone>,<item:minecraft:stone>],
+    [<item:minecraft:dirt>,<item:minecraft:dirt>],
+    [<item:minecraft:stone>,<item:minecraft:stone>]
 ], new LycheeRecipeBuilder()
-    .comment("测试")
-    .assembling(LycheePosts.setItem(<item:minecraft:redstone>).target("/key/a"))
+    .comment("Tetsing")
+    .assembling(LycheePosts.setItem(<item:minecraft:redstone>).target("/result"))
 );
