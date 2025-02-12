@@ -44,7 +44,7 @@ LycheeTags.fireImmune(<tag:item:c:sands>);
 LycheeTags.lightningImmune(<entitytype:minecraft:cat>);
 
 craftingTable.remove(<item:minecraft:coarse_dirt>);
-LycheeRecipeManager.addAdvencedRecipe(<item:minecraft:coarse_dirt>, [
+LycheeRecipeManager.addAdvancedRecipe(<item:minecraft:coarse_dirt>, [
     [<item:minecraft:stone>,<item:minecraft:stone>],
     [<item:minecraft:dirt>,<item:minecraft:dirt>],
     [<item:minecraft:stone>,<item:minecraft:stone>]

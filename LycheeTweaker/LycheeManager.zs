@@ -20,7 +20,7 @@ public class LycheeRecipeManager {
         recipeType.addJsonRecipe(name, builder.getRecipe());
     }
 
-    public static addAdvencedRecipe(output as IItemStack, inputs as IIngredient[][], assembling as LycheeRecipeBuilder, group as string = "", recipeName as string = "") as void {
+    public static addAdvancedRecipe(output as IItemStack, inputs as IIngredient[][], assembling as LycheeRecipeBuilder, group as string = "", recipeName as string = "") as void {
         val recipe = new MapData();
 
         recipe.put("type","lychee:crafting");
@@ -33,7 +33,7 @@ public class LycheeRecipeManager {
         recipes.addJsonRecipe(recipeName,recipe);
     }
 
-    public static addAdvencedRecipe(output as IItemStack, inputs as IIngredient[][], group as string = "", recipeName as string = "") as void {
+    public static addAdvancedRecipe(output as IItemStack, inputs as IIngredient[][], group as string = "", recipeName as string = "") as void {
         val recipe = new MapData();
 
         recipe.put("type","lychee:crafting");
