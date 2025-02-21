@@ -49,6 +49,6 @@ LycheeRecipeManager.addAdvancedRecipe(<item:minecraft:coarse_dirt>, [
     [<item:minecraft:dirt>,<item:minecraft:dirt>],
     [<item:minecraft:stone>,<item:minecraft:stone>]
 ], new LycheeRecipeBuilder()
-    .comment("Tetsing")
+    .comment("testing")
     .assembling(LycheePosts.setItem(<item:minecraft:redstone>).target("/result"))
 );
