@@ -156,7 +156,7 @@ public class LycheeRecipeBuilder {
         向配方中添加物品输入。
     */
     public itemIn(ingredient as IIngredient) as LycheeRecipeBuilder {
-        recipe.put("item_in", DataConvertUtils.convertItemStack(ingredient));
+        recipe.put("item_in", ingredient as IData);
         return this;
     }
 
@@ -176,7 +176,7 @@ public class LycheeRecipeBuilder {
     public itemIn(ingredients as IIngredient[]) as LycheeRecipeBuilder {
         var ingredientList = new List<IData>();
         for ingredient in ingredients {
-            ingredientList.add(DataConvertUtils.convertItemStack(ingredient));
+            ingredientList.add(ingredient as IData);
         }
         recipe.put("item_in", new ListData(ingredientList));
         return this;
