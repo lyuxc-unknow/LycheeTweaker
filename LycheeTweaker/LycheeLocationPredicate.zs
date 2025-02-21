@@ -48,7 +48,18 @@ public class LycheeLocationPredicate {
         data.put("block",block as IData);
         return this;
     }
-
+    /*
+        It is recommended to use the block method to represent fluids, 
+        because the use of fluids in Lychee does not handle localization correctly,
+        and the corresponding fluid prompt code in Lychee is empty,
+        which causes it to not display properly in the game. 
+        If you use it, it is recommended to add comments with the LycheeRecipeBuilder#comment method
+        
+        建议使用block方法来表示流体，
+        因为Lychee中使用流体未能正确处理本地化，
+        且Lychee对应的流体提示代码为空导致游戏内无法正常显示，
+        若使用建议配合 LycheeRecipeBuilder#comment 方法添加注释
+    */
     public fluid(fluid as LycheeFluid) as LycheeLocationPredicate {
         data.put("fluid",fluid as IData);
         return this;
