@@ -35,9 +35,9 @@ public class LycheeFluid {
         data = mapData as IData;
     }
 
-    public this() {
-        data = "*";
-    }
+    // public this() {
+    //     data = "*";
+    // }
     
     public asData() as IData => data;
     public implicit as IData => data;
