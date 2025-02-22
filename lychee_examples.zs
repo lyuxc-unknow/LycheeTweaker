@@ -34,6 +34,8 @@ LycheeRecipeManager.addRecipe("example_item_burning", <recipetype:lychee:item_bu
 LycheeRecipeManager.addRecipe("sand_crush_nether_star", <recipetype:lychee:block_crushing>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:nether_star>)
     .crushingFallingBlock(<block:minecraft:sand>)
+    .crushingLandingBlock(<block:minecraft:composter>)
+    // .post(LycheePosts.dropItem(<item:minecraft:dirt>))
     .post(LycheePosts.executeCommand("effect give @e[type=minecraft:player, distance=0..5] minecraft:wither 10 2"))
 );
 
@@ -53,6 +55,7 @@ LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting
 
 LycheeTags.fireImmune(<tag:item:c:sands>);
 LycheeTags.lightningImmune(<entitytype:minecraft:cat>);
+LycheeTags.extendBox(<block:minecraft:composter>);
 
 craftingTable.remove(<item:minecraft:coarse_dirt>);
 LycheeRecipeManager.addAdvancedRecipe(<item:minecraft:coarse_dirt>, [
