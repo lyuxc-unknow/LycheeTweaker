@@ -13,8 +13,8 @@ import crafttweaker.api.data.StringData;
 import crafttweaker.api.fluid.IFluidStack;
 
 /*
-    Lychee Fluid wrap Lychee's format for representing Fluid. You can pass in a block, a blockstate.
-    Lychee Fluid 封装了 Lychee 的流体可以表示格式，可以传入方块、方块状态。
+    Lychee Fluid wrap Lychee's format for representing Fluid. You can pass in a fluid, a blockstate.
+    Lychee Fluid 封装了 Lychee 的流体可以表示格式，可以传入流体、流体的状态。
 */
 public class LycheeFluid {
     public var data as IData : get;

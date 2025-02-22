@@ -110,8 +110,8 @@ public class LycheeRecipeBuilder {
     }
 
     /*
-        Adds a comment to put when you hover over the (i) in JEI
-        添加注释，当您将鼠标悬停在 JEI 中的 (i) 上时显示
+        Adds a comment to put when you hover over the (i) in XEI(JEI/REI/EMI)
+        添加注释，当您将鼠标悬停在 XEI(JEI/REI/EMI) 中的 (i) 上时显示
     */
     public comment(comment as string) as LycheeRecipeBuilder {
         recipe.put("comment", comment);
@@ -119,8 +119,8 @@ public class LycheeRecipeBuilder {
     }
 
     /*
-        If true, recipe appears in JEI but does not do anything.
-        如果为true, 配方将会出现在JEI中但是无法合成
+        If true, recipe appears in XEI(JEI/REI/EMI) but does not do anything.
+        如果为true, 配方将会出现在XEI(JEI/REI/EMI)中但是无法合成
     */
     public setGhost(isGhost as bool) as LycheeRecipeBuilder {
         recipe.put("ghost", isGhost);
@@ -128,8 +128,8 @@ public class LycheeRecipeBuilder {
     }
 
     /*
-        Whether or not to hide in JEI.
-        是否在 JEI 中隐藏。
+        Whether or not to hide in JEI(JEI/REI/EMI).
+        是否在 XEI(JEI/REI/EMI) 中隐藏。
     */
     public setHideInJEI(shouldHide as bool) as LycheeRecipeBuilder {
         recipe.put("hide_in_viewer", shouldHide);

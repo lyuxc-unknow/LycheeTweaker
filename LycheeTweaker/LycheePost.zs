@@ -131,7 +131,18 @@ public class LycheePosts {
         });
     }
 
-    public static explode(radius as int = 4, radiusStep as double = 0.5, offset as BlockPos = new BlockPos(0,0,0), blockInteraction as string = "break", onFire as bool = false) as LycheePost {
+    /*
+        blockInteraction can inputs "keep" | "destroy" | "destroy_with_decay"
+        keep: Only particles, will not destroy blocks
+        destroy: It will destroy the blocks, but keep them all(same as vanilla)
+        destroy_with_decay: It will destroy the block, but only retain a portion (similar to the explosion in old versions)
+
+        blockInteraction 可以输入 "keep" | "destroy" | "destroy_with_decay"
+        keep: 只有粒子效果，不会破坏方块
+        destroy：破坏方块，但是全部保留（与原版相同）
+        destroy_with_decay：破坏方块，但是只保留部分（与老版本相同）
+    */
+    public static explode(radius as int = 4, radiusStep as double = 0.5, offset as BlockPos = new BlockPos(0,0,0), blockInteraction as string = "destroy", onFire as bool = false) as LycheePost {
         return new LycheePost("explode", {
             "offsetX": offset.x,
             "offsetY": offset.y,
@@ -142,6 +153,7 @@ public class LycheePosts {
             "radius_step": radiusStep
         });
     }
+
     // If is a keyword of CraftTweaker, so use iif
     // If是CraftTweaker的关键字，故使用iif
     public static iif(thenArray as LycheePost[],ielse as LycheePost[]) as LycheePost {

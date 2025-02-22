@@ -66,7 +66,7 @@ public class LycheeLocationPredicate {
     }
 
     public light(light as IntBounds) as LycheeLocationPredicate {
-        data.put("light",{"light":light as IData});
+        data.put("light",{"light":light});
         return this;
     }
 
