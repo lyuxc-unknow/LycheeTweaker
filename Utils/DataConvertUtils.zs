@@ -14,7 +14,7 @@ import crafttweaker.api.util.math.BlockPos;
 import stdlib.List;
 
 public class DataConvertUtils {
-    private static val usedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#@".toAsciiBytes();
+    private static val usedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#@".toAsciiBytes();
 
     public static convertItemStack(itemstack as IItemStack) as MapData {
         val itemData as MapData = new MapData();

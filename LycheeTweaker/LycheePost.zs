@@ -117,13 +117,16 @@ public class LycheePosts {
             "damage": damage
         });
     }
-
-    public static hurt(bounds as DoubleBounds, source as string = "") as LycheePost {
-        var map as MapData = {};
-        map.put("damage",bounds);
-        if (source != "") map.put("source",source);
-        return new LycheePost("hurt",map);
-    }
+    /*
+        hurt method has been removed in 1.21.1. You need to use the /damage command instead.
+        hurt方法在1.21.1中已经被删除，你需要使用/damage命令来代替
+    */
+    // public static hurt(bounds as DoubleBounds, source as string = "") as LycheePost {
+    //     var map as MapData = {};
+    //     map.put("damage",bounds);
+    //     if (source != "") map.put("source",source);
+    //     return new LycheePost("hurt",map);
+    // }
 
     public static anvilDamageChance(chance as double) as LycheePost {
         return new LycheePost("anvil_damage_chance", {
@@ -132,12 +135,12 @@ public class LycheePosts {
     }
 
     /*
-        blockInteraction can inputs "keep" | "destroy" | "destroy_with_decay"
+        blockInteraction can inputs "keep" | "destroy" | "destroy_with_decay" or LycheeEnum
         keep: Only particles, will not destroy blocks
         destroy: It will destroy the blocks, but keep them all(same as vanilla)
         destroy_with_decay: It will destroy the block, but only retain a portion (similar to the explosion in old versions)
 
-        blockInteraction 可以输入 "keep" | "destroy" | "destroy_with_decay"
+        blockInteraction 可以输入 "keep" | "destroy" | "destroy_with_decay" 或者 LycheeEnum
         keep: 只有粒子效果，不会破坏方块
         destroy：破坏方块，但是全部保留（与原版相同）
         destroy_with_decay：破坏方块，但是只保留部分（与老版本相同）
@@ -156,7 +159,7 @@ public class LycheePosts {
 
     // If is a keyword of CraftTweaker, so use iif
     // If是CraftTweaker的关键字，故使用iif
-    public static iif(thenArray as LycheePost[],ielse as LycheePost[]) as LycheePost {
+    public static iif(thenArray as LycheePost[],elseArray as LycheePost[]) as LycheePost {
         var thenList = new List<IData>();
         var elseList = new List<IData>();
 
@@ -164,7 +167,7 @@ public class LycheePosts {
             thenList.add(thenPost as IData);
         }
 
-        for elsePost in ielse {
+        for elsePost in elseArray {
             elseList.add(elsePost as IData);
         }
         return new LycheePost("if",{

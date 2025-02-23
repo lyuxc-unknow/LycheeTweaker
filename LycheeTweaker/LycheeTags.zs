@@ -60,7 +60,7 @@ public class LycheeTags {
 
     /*
         Add the lychee:lightning_immune tag to the entity, which allows the entity to be protected from lightning damage
-        为实体添加l ychee:lightning_immune 标签，该标签允许实体不会受到闪电的伤害
+        为实体添加 lychee:lightning_immune 标签，该标签允许实体不会受到闪电的伤害
     */
     public static lightningImmune(entity as EntityType<Entity>) as void {
         <tag:entity_type:lychee:lightning_immune>.add(entity);

@@ -192,7 +192,7 @@ public class LycheeConditions {
 
     public static isSneaking() as LycheeCondition => new LycheeCondition("is_sneaking", {});
 
-    // Allowed value for "direction": "up", "down", "north", "south", "east", "west", "side", "forward"
+    // Allowed value for "direction": "up", "down", "north", "south", "east", "west", "side", "forward" or LycheeEnum
     // 允许输入的"方向"数值: "up", "down", "north", "south", "east", "west", "side", "forward"
     public static direction(dir as string) => new LycheeCondition("direction", {
         "direction": dir
