@@ -19,6 +19,7 @@ public class LycheeCondition {
     }
 
     /*
+        displays as "???" in player's tooltip 
         如果 isSecret 为 true，则该条件不会出现在 JEI 中
     */
     public secret(isSecret as bool) as LycheeCondition {
@@ -26,6 +27,7 @@ public class LycheeCondition {
         return this;
     }
     /*
+        When you hover over (i), a description of the condition is added.
         当您将鼠标悬停在 (i) 上时，会添加条件描述。
     */
     public description(desc as string) as LycheeCondition {
@@ -113,6 +115,9 @@ public class LycheeConditions {
     /*
         Returns true if and only if ONE of the inputs is true.
         只有一个条件成立时,才会为true
+        It is recommended to use LycheeCondition#description method to overwrite the original description, 
+        because the default description generated is terrible
+        建议使用LycheeCondition#description方法覆盖原有描述，因为默认生成的描述很糟糕
     */
     public static onlyOne(conditions as LycheeCondition[]) as LycheeCondition {
         var orList = new List<LycheeCondition>();
@@ -192,7 +197,7 @@ public class LycheeConditions {
     public static isSneaking() as LycheeCondition => new LycheeCondition("is_sneaking", {});
 
     // Allowed value for "direction": "up", "down", "north", "south", "east", "west", "side", "forward" or LycheeEnum
-    // 允许输入的"方向"数值: "up", "down", "north", "south", "east", "west", "side", "forward"
+    // 允许输入的"方向"数值: "up", "down", "north", "south", "east", "west", "side", "forward" 或者 LycheeEnum
     public static direction(dir as string) => new LycheeCondition("direction", {
         "direction": dir
     });
