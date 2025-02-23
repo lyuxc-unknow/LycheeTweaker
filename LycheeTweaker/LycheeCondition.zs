@@ -112,21 +112,20 @@ public class LycheeConditions {
 
     /*
         Returns true if and only if ONE of the inputs is true.
-        Broken, no plans to fix unless someone really wants me to.
+        只有一个条件成立时,才会为true
     */
-    // public static onlyOne(conditions as LycheeCondition[]) as LycheeCondition {
-        
-    //     var orList = new List<LycheeCondition>();
+    public static onlyOne(conditions as LycheeCondition[]) as LycheeCondition {
+        var orList = new List<LycheeCondition>();
 
-    //     for condition in conditions {
-    //         var nandList = new List<LycheeCondition>();
-    //         for con in conditions {
-    //             if !(con === condition) nandList.add(con);
-    //         }
-    //         orList.add(and([condition, nand(nandList)]));
-    //     }
-    //     return or(orList);
-    // }
+        for condition in conditions {
+            var nandList = new List<LycheeCondition>();
+            for con in conditions {
+                if !((con as IData) == (condition as IData)) nandList.add(con);
+            }
+            orList.add(and([condition, nand(nandList)]));
+        }
+        return or(orList);
+    }
 
     /*
         Regular conditions here. Most are self explanatory

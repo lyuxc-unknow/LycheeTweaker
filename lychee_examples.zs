@@ -47,10 +47,10 @@ LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting
     //Debugging log: Allow any block
     //调试日志:允许任意方块
     // .blockIn(new LycheeBlock())
-    .condition([LycheeConditions.dimension("minecraft:the_nether"), LycheeConditions.isSneaking()])
+    .condition(LycheeConditions.onlyOne([LycheeConditions.dimension("minecraft:the_nether"), LycheeConditions.isSneaking()]))
     //Debugging log: condition test, allowing output only when conditions are met
     //调试日志:condition测试，需要满足条件时才允许输出
-    .post([LycheePosts.placeBlock(<block:minecraft:glass>).condition(LycheeConditions.fluid(<tag:fluid:c:lava>,new BlockPos(0,1,0))), LycheePosts.executeCommand("particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 4")])
+    .post([LycheePosts.placeBlock(<block:minecraft:glass>), LycheePosts.executeCommand("particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.1 4")])
 );
 
 LycheeTags.fireImmune(<tag:item:c:sands>);
