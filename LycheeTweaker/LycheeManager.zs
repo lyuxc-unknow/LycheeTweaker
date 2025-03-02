@@ -16,8 +16,8 @@ import crafttweaker.api.world.Container;
     这是编写 Lychee 配方的方法，只需通过调用 LycheeRecipeManager.addRecipe(),如果需要添加高级有序合成配方，则需要调用 LycheeRecipeManager.addAdvancedRecipe()
 */
 public class LycheeRecipeManager {
-    public static addRecipe(name as string, recipeType as IRecipeManager<Recipe<Container>>, builder as LycheeRecipeBuilder) as void {
-        recipeType.addJsonRecipe(name, builder.getRecipe());
+    public static addRecipe(recipeType as IRecipeManager<Recipe<Container>>, builder as LycheeRecipeBuilder) as void {
+        recipeType.addJsonRecipe(DataConvertUtils.recipesName(), builder.getRecipe());
     }
 
     public static addAdvancedRecipe(output as IItemStack, inputs as IIngredient[][], assembling as LycheeRecipeBuilder, group as string = "", recipeName as string = "") as void {
@@ -29,8 +29,7 @@ public class LycheeRecipeManager {
         recipe.merge(assembling.getRecipe());
 
         if (group != "") recipe.put("group",group);
-        if (recipeName == "") recipeName = DataConvertUtils.convertItemStackToRecipeName(output);
-        recipes.addJsonRecipe(recipeName,recipe);
+        recipes.addJsonRecipe(DataConvertUtils.recipesName(),recipe);
     }
 
     public static addAdvancedRecipe(output as IItemStack, inputs as IIngredient[][], group as string = "", recipeName as string = "") as void {
@@ -41,8 +40,7 @@ public class LycheeRecipeManager {
         recipe.put("result",DataConvertUtils.convertItemStack(output));
 
         if (group != "") recipe.put("group",group);
-        if (recipeName == "") recipeName = DataConvertUtils.convertItemStackToRecipeName(output);
-        recipes.addJsonRecipe(recipeName,recipe);
+        recipes.addJsonRecipe(DataConvertUtils.recipesName(),recipe);
     }
 
     public static removeByName(recipeType as IRecipeManager<Recipe<Container>>, name as string[]) as void {
