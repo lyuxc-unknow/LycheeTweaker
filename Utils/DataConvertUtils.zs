@@ -12,6 +12,7 @@ import crafttweaker.api.resource.ResourceLocation;
 import crafttweaker.api.world.Level;
 import crafttweaker.api.util.math.BlockPos;
 import stdlib.List;
+import uuid.UUID;
 
 public class DataConvertUtils {
     private static val usedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#@".toAsciiBytes();
@@ -44,13 +45,6 @@ public class DataConvertUtils {
         }
 
         return itemData;
-    }
-
-    public static convertItemStackToRecipeName(itemstack as IItemStack) as string {
-        var outputDefinition as ItemDefinition = itemstack.definition;
-        var outputItemRL as ResourceLocation = outputDefinition.getRegistryName();
-        var recipesName as string = outputItemRL.getNamespace() + "_" + outputItemRL.getPath();
-        return recipesName;
     }
 
     public static toPatternAndKey(ingredients as IIngredient[][]) as MapData {
@@ -115,5 +109,9 @@ public class DataConvertUtils {
             i = i + 1;
         }
         return keyMap;
+    }
+
+    public static recipesName() as string {
+        return UUID.random() as string;
     }
 }
