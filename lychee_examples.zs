@@ -20,7 +20,7 @@ import crafttweaker.api.util.math.BlockPos;
 
 //Toss brick into fire, get back nether brick
 //将红砖丢入火中返回下界砖
-LycheeRecipeManager.addRecipe("example_item_burning", <recipetype:lychee:item_burning>, new LycheeRecipeBuilder()
+LycheeRecipeManager.addRecipe(<recipetype:lychee:item_burning>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:brick>)
     //Debugging log: When multiple item inputs are not supported for recipe types, prioritize reading the last one
     //调试日志:在不支持多个物品输入的配方类型时，优先读取最后一个
@@ -31,7 +31,7 @@ LycheeRecipeManager.addRecipe("example_item_burning", <recipetype:lychee:item_bu
 
 //Gives all players in a 5 block radius Wither 3 for 10 seconds
 //给半径五格内的玩家10秒的3级凋灵效果
-LycheeRecipeManager.addRecipe("sand_crush_nether_star", <recipetype:lychee:block_crushing>, new LycheeRecipeBuilder()
+LycheeRecipeManager.addRecipe(<recipetype:lychee:block_crushing>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:nether_star>)
     .crushingFallingBlock(<block:minecraft:sand>)
     .crushingLandingBlock(<block:minecraft:composter>)
@@ -41,7 +41,7 @@ LycheeRecipeManager.addRecipe("sand_crush_nether_star", <recipetype:lychee:block
 
 //Turn sand into glass, in the nether while sneaking
 //在下界潜行时，将沙子转换成玻璃
-LycheeRecipeManager.addRecipe("smelt_sand", <recipetype:lychee:block_interacting>, new LycheeRecipeBuilder()
+LycheeRecipeManager.addRecipe(<recipetype:lychee:block_interacting>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:fire_charge>)
     .blockIn(<block:minecraft:sand>)
     //Debugging log: Allow any block
@@ -67,7 +67,7 @@ LycheeRecipeManager.addAdvancedRecipe(<item:minecraft:coarse_dirt>, [
     .assembling(LycheePosts.setItem(<item:minecraft:redstone>).target("/result"))
 );
 
-LycheeRecipeManager.addRecipe("test11",<recipetype:lychee:dripstone_dripping>,new LycheeRecipeBuilder()
+LycheeRecipeManager.addRecipe(<recipetype:lychee:dripstone_dripping>,new LycheeRecipeBuilder()
     .sourceBlock(<blockstate:minecraft:water>)
     .targetBlock(new LycheeBlock([
         <block:minecraft:green_wool>,
@@ -89,12 +89,12 @@ LycheeRecipeManager.addRecipe("test11",<recipetype:lychee:dripstone_dripping>,ne
     .post(LycheePosts.placeBlock(<block:minecraft:white_wool>))
 );
 
-LycheeRecipeManager.addRecipe("example_item_exploding", <recipetype:lychee:item_exploding>, new LycheeRecipeBuilder()
+LycheeRecipeManager.addRecipe(<recipetype:lychee:item_exploding>, new LycheeRecipeBuilder()
     .itemIn([<item:minecraft:obsidian>,<tag:item:minecraft:coals>,<item:minecraft:brick>])
     .post(LycheePosts.dropItem(<item:minecraft:soul_soil>))
 );
 
-LycheeRecipeManager.addRecipe("test",<recipetype:lychee:item_inside>, new LycheeRecipeBuilder()
+LycheeRecipeManager.addRecipe(<recipetype:lychee:item_inside>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:gunpowder> * 2)
     .blockIn(<block:minecraft:air>)
     .post(LycheePosts.explode(4,0.5,new BlockPos(0,0,0),LycheeEnum.DESTRORWITHDECAY,false))
