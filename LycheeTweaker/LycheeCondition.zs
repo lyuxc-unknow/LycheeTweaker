@@ -1,4 +1,4 @@
-#priority 727
+#priority 1000
 #modloaded lychee
 
 import crafttweaker.api.data.MapData;
@@ -206,10 +206,11 @@ public class LycheeConditions {
         "key": key
     });
 
-    public static skyDarkness(value as IntBounds,requireSkyLight as bool = false,canSeeSky as bool = false) => new LycheeCondition("sky_darken", {
+    // can_see_sky was removed in latest version of Lychee
+    // can_see_sky参数再最新版Lychee中已被移除
+    public static skyDarkness(value as IntBounds,requireSkyLight as bool = false) => new LycheeCondition("sky_darken", {
         "value": value,
-        "require_sky_light": requireSkyLight,
-        "can_see_sky": canSeeSky
+        "require_sky_light": requireSkyLight
     });
 
     // =================================================== //

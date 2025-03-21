@@ -1,4 +1,4 @@
-#priority 727
+#priority 1000
 
 /*
     Similar to Percentage<T>, but using int as weight.

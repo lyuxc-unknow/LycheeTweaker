@@ -1,4 +1,4 @@
-#priority 727
+#priority 1000
 #modloaded lychee
 
 import crafttweaker.api.data.MapData;

@@ -1,4 +1,4 @@
-#noload
+#debug
 
 /*
     Valid recipetypes:
@@ -17,6 +17,8 @@
 */
 
 import crafttweaker.api.util.math.BlockPos;
+import crafttweaker.api.data.MapData;
+import crafttweaker.api.data.IData;
 
 //Toss brick into fire, get back nether brick
 //将红砖丢入火中返回下界砖
@@ -101,3 +103,27 @@ LycheeRecipeManager.addRecipe(<recipetype:lychee:item_inside>, new LycheeRecipeB
 );
 
 <tag:item:lychee:item_exploding_catalysts>.add(<item:minecraft:gunpowder>);
+
+<tag:block:waterlogged>.add(<block:minecraft:oak_stairs>);
+
+val postList as LycheePost[] = [
+    LycheePosts.placeBlock(<block:minecraft:light_gray_wool>, new BlockPos(1,0,0))
+        .condition(LycheeConditions.block(<block:minecraft:deepslate>, new BlockPos(2,0,0))),  
+    LycheePosts.placeBlock(<block:minecraft:light_gray_wool>, new BlockPos(-1,0,0))
+        .condition(LycheeConditions.block(<block:minecraft:deepslate>, new BlockPos(-2,0,0))),
+    LycheePosts.placeBlock(<block:minecraft:light_gray_wool>, new BlockPos(0,0,1))
+        .condition(LycheeConditions.block(<block:minecraft:deepslate>, new BlockPos(0,0,2))),
+    LycheePosts.placeBlock(<block:minecraft:light_gray_wool>, new BlockPos(0,0,-1))
+        .condition(LycheeConditions.block(<block:minecraft:deepslate>, new BlockPos(0,0,-2)))
+];
+
+LycheeRecipeManager.addRecipe(<recipetype:lychee:random_block_ticking>, new LycheeRecipeBuilder()
+    .blockIn(new LycheeBlock(<tag:block:waterlogged>,new LycheeBlockState({waterlogged: "true"} as MapData)))
+    .post(postList)
+);
+
+LycheeRecipeManager.addRecipe(<recipetype:lychee:random_block_ticking>, new LycheeRecipeBuilder()
+    .blockIn(<block:minecraft:water>)
+    .post(postList)
+);
+

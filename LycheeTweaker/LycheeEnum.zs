@@ -1,3 +1,6 @@
+#priority 1000
+#modloaded lychee
+
 public enum LycheeEnum {
     /*
         keep: Only particles, will not destroy blocks

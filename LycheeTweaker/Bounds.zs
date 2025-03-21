@@ -1,4 +1,4 @@
-#priority 727
+#priority 1000
 
 import crafttweaker.api.data.IData;
 

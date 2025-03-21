@@ -1,4 +1,5 @@
-#priority 728
+#priority 1001
+
 import crafttweaker.api.block.Block;
 import crafttweaker.api.block.BlockState;
 import crafttweaker.api.data.IData;

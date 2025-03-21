@@ -1,4 +1,4 @@
-#priority 727
+#priority 1000
 #modloaded lychee
 
 import crafttweaker.api.block.Block;
@@ -18,8 +18,9 @@ import crafttweaker.api.data.StringData;
 public class LycheeBlock {
     public var data as IData : get;
 
-    public this(tag as KnownTag<Block>) {
+    public this(tag as KnownTag<Block>, state as LycheeBlockState? = null) {
         data = {"blocks": "#" + tag.id};
+        if(state != null) data.put("state", state as MapData);
     }
 
     public this(blocks as Block[], state as LycheeBlockState? = null, nbt as MapData? = null) {

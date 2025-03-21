@@ -1,4 +1,4 @@
-#priority 727
+#priority 1000
 #modloaded lychee
 
 import crafttweaker.api.data.MapData;
@@ -50,7 +50,12 @@ public class LycheePost {
     }
 
     public condition(condition as LycheeCondition) as LycheePost {
-        data.put("contextual", condition);
+        data.put("if", condition);
+        return this;
+    }
+
+    public icon(path as string) as LycheePost {
+        data.put("icon", path);
         return this;
     }
 
@@ -59,7 +64,7 @@ public class LycheePost {
         for condition in conditions {
             conditionList.add(condition as IData);
         }
-        data.put("contextual", new ListData(conditionList));
+        data.put("if", new ListData(conditionList));
         return this;
     }
     
@@ -190,16 +195,25 @@ public class LycheePosts {
         "factor": num
     });
 
-    public static cycleStateProperty(block as LycheeBlock, property as string, offset as BlockPos = new BlockPos(0,0,0)) => new LycheePost("cycle_state_property", {
+    public static cycleStateProperty(block as LycheeBlock, property as string, offset as BlockPos = new BlockPos(0,0,0), reversed as bool = false) => new LycheePost("cycle_state_property", {
         "block": block,
-        "property": property,
         "offsetX": offset.x,
         "offsetY": offset.y,
-        "offsetZ": offset.z
+        "offsetZ": offset.z,
+        "property": property,
+        "reversed": reversed
     });
 
     public static setItem(stack as IItemStack) as LycheePost {
         return new LycheePost("set_item", DataConvertUtils.convertItemStack(stack));
+    }
+
+    public static move(x as double, y as double, z as double) as LycheePost {
+        var list as ListData = new ListData();
+        list.add(x);
+        list.add(y);
+        list.add(z);
+        return new LycheePost("move",{"offset":list});
     }
 
     public static custom(id as string,data as MapData = new MapData()) as LycheePost {
