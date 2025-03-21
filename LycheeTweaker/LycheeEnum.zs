@@ -14,7 +14,7 @@ public enum LycheeEnum {
     // LycheePosts#explode
     KEEP,
     DESTROY,
-    DESTRORWITHDECAY,
+    DESTROR_WITH_DECAY,
 
     // LycheeConditions#weather
     CLEAR,
@@ -35,12 +35,26 @@ public enum LycheeEnum {
     EAST,
     WEST,
     SIDE,
-    FORWARD;
+    FORWARD,
+    
+    // LycheeConditions#lootParameter
+    THIS_ENTITY,
+    LAST_DAMAGE_PLAYER,
+    DAMAGE_SOURCE,
+    ATTACKING_ENTITY,
+    DIRECT_ATTACKING_ENTITY,
+    ORIGIN,
+    BLOCK_STATE,
+    BLOCK_ENTITY,
+    TOOL,
+    EXPLOSION_RADIUS,
+    ENCHANTMENT_LEVEL,
+    ENCHANTMENT_ACTIVE;
 
     public value(v as LycheeEnum) as string {
         if (v == LycheeEnum.KEEP) return "keep";
         if (v == LycheeEnum.DESTROY) return "destroy";
-        if (v == LycheeEnum.DESTRORWITHDECAY) return "destroy_with_decay";
+        if (v == LycheeEnum.DESTROR_WITH_DECAY) return "destroy_with_decay";
         if (v == LycheeEnum.CLEAR) return "clear";
         if (v == LycheeEnum.RAIN) return "rain";
         if (v == LycheeEnum.THUNDER) return "thunder";
@@ -53,6 +67,18 @@ public enum LycheeEnum {
         if (v == LycheeEnum.WEST) return "west";
         if (v == LycheeEnum.SIDE) return "side";
         if (v == LycheeEnum.FORWARD) return "forward";
+        if (v == LycheeEnum.THIS_ENTITY) return "this_entity";
+        if (v == LycheeEnum.LAST_DAMAGE_PLAYER) return "last_damage_player";
+        if (v == LycheeEnum.DAMAGE_SOURCE) return "damage_source";
+        if (v == LycheeEnum.ATTACKING_ENTITY) return "attacking_entity";
+        if (v == LycheeEnum.DIRECT_ATTACKING_ENTITY) return "direct_attacking_entity";
+        if (v == LycheeEnum.ORIGIN) return "origin";
+        if (v == LycheeEnum.BLOCK_STATE) return "block_state";
+        if (v == LycheeEnum.BLOCK_ENTITY) return "block_entity";
+        if (v == LycheeEnum.TOOL) return "tool";
+        if (v == LycheeEnum.EXPLOSION_RADIUS) return "explosion_radius";
+        if (v == LycheeEnum.ENCHANTMENT_LEVEL) return "enchantment_level";
+        if (v == LycheeEnum.ENCHANTMENT_ACTIVE) return "enchantment_active";
         return "";
     }
 

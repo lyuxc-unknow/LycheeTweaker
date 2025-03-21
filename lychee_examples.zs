@@ -99,7 +99,7 @@ LycheeRecipeManager.addRecipe(<recipetype:lychee:item_exploding>, new LycheeReci
 LycheeRecipeManager.addRecipe(<recipetype:lychee:item_inside>, new LycheeRecipeBuilder()
     .itemIn(<item:minecraft:gunpowder> * 2)
     .blockIn(<block:minecraft:air>)
-    .post(LycheePosts.explode(4,0.5,new BlockPos(0,0,0),LycheeEnum.DESTRORWITHDECAY,false))
+    .post(LycheePosts.explode(4,0.5,new BlockPos(0,0,0),LycheeEnum.DESTROR_WITH_DECAY,false))
 );
 
 <tag:item:lychee:item_exploding_catalysts>.add(<item:minecraft:gunpowder>);
