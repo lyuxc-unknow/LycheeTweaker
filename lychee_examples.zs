@@ -1,4 +1,4 @@
-#debug
+#noload
 
 /*
     Valid recipetypes:
