@@ -127,3 +127,8 @@ LycheeRecipeManager.addRecipe(<recipetype:lychee:random_block_ticking>, new Lych
     .post(postList)
 );
 
+LycheeRecipeManager.addRecipe(<recipetype:lychee:block_interacting>, new LycheeRecipeBuilder()
+    .blockIn(<block:minecraft:grass_block>)
+    .itemIn(<item:minecraft:lever>)
+    .post([LycheePosts.move(0.0,1.0,0.0),LycheePosts.placeBlock(<block:minecraft:dirt>)])
+);

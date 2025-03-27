@@ -198,17 +198,17 @@ public class LycheeConditions {
 
     // Allowed value for "direction": "up", "down", "north", "south", "east", "west", "side", "forward" or LycheeEnum
     // 允许输入的"方向"数值: "up", "down", "north", "south", "east", "west", "side", "forward" 或者 LycheeEnum
-    public static direction(dir as string) => new LycheeCondition("direction", {
+    public static direction(dir as string) as LycheeCondition => new LycheeCondition("direction", {
         "direction": dir
     });
 
-    public static lootParameter(key as string) => new LycheeCondition("check_param", {
+    public static lootParameter(key as string) as LycheeCondition => new LycheeCondition("check_param", {
         "key": key
     });
 
     // can_see_sky was removed in latest version of Lychee
     // can_see_sky参数再最新版Lychee中已被移除
-    public static skyDarkness(value as IntBounds,requireSkyLight as bool = false) => new LycheeCondition("sky_darken", {
+    public static skyDarkness(value as IntBounds,requireSkyLight as bool = false) as LycheeCondition => new LycheeCondition("sky_darken", {
         "value": value,
         "require_sky_light": requireSkyLight
     });

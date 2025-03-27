@@ -162,9 +162,7 @@ public class LycheePosts {
         });
     }
 
-    // If is a keyword of CraftTweaker, so use iif
-    // If是CraftTweaker的关键字，故使用iif
-    public static iif(thenArray as LycheePost[],elseArray as LycheePost[]) as LycheePost {
+    public static lycheeIf(thenArray as LycheePost[],elseArray as LycheePost[]) as LycheePost {
         var thenList = new List<IData>();
         var elseList = new List<IData>();
 
@@ -181,21 +179,21 @@ public class LycheePosts {
         });
     }
 
-    public static delay(time as double) => new LycheePost("delay",{
+    public static delay(time as double) as LycheePost => new LycheePost("delay",{
         "s": time
     });
 
-    public static addItemCoolDown(time as double) => new LycheePost("add_item_cooldown",{
+    public static addItemCoolDown(time as double) as LycheePost => new LycheePost("add_item_cooldown",{
         "s": time
     });
 
-    public static exit() => new LycheePost("exit");
+    public static exit() as LycheePost => new LycheePost("exit");
 
-    public static moveTowardsFace(num as double = 1.0) => new LycheePost("move_towards_face", {
+    public static moveTowardsFace(num as double = 1.0) as LycheePost => new LycheePost("move_towards_face", {
         "factor": num
     });
 
-    public static cycleStateProperty(block as LycheeBlock, property as string, offset as BlockPos = new BlockPos(0,0,0), reversed as bool = false) => new LycheePost("cycle_state_property", {
+    public static cycleStateProperty(block as LycheeBlock, property as string, offset as BlockPos = new BlockPos(0,0,0), reversed as bool = false) as LycheePost => new LycheePost("cycle_state_property", {
         "block": block,
         "offsetX": offset.x,
         "offsetY": offset.y,
@@ -204,9 +202,7 @@ public class LycheePosts {
         "reversed": reversed
     });
 
-    public static setItem(stack as IItemStack) as LycheePost {
-        return new LycheePost("set_item", DataConvertUtils.convertItemStack(stack));
-    }
+    public static setItem(stack as IItemStack) as LycheePost => new LycheePost("set_item", DataConvertUtils.convertItemStack(stack));
 
     public static move(x as double, y as double, z as double) as LycheePost {
         var list as ListData = new ListData();
