@@ -7,6 +7,7 @@ import crafttweaker.api.data.ListData;
 import crafttweaker.api.fluid.IFluidStack;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.ingredient.IIngredient;
+import crafttweaker.api.predicate.EntityPredicate;
 import stdlib.List;
 
 /*
@@ -274,6 +275,26 @@ public class LycheeRecipeBuilder {
     */
     public targetBlock(inputFluid as IFluidStack) as LycheeRecipeBuilder {
         recipe.put("target_block", inputFluid.registryName.toString());
+        return this;
+    }
+
+    /*
+        手动编写map似乎比使用谓词处理更简单点
+        参阅 https://zh.minecraft.wiki/w/实体数据格式 获得更多信息，或使用/ct entity_info 命令查看实体数据。
+        在lychee的使用中，需要使用type来表示目标实体类型
+        参阅 TODO 来获取更多信息
+        Writing the map table manually seems to be easier than using predicates. 
+        See https://minecraft.wiki/w/Entity_format for more information, or use the /ct entity_info command to view entity data.
+        When using lychee, you need to use type to indicate the target entity type. 
+        See TODO for more information
+    */
+    public entity(entity as MapData) as LycheeRecipeBuilder {
+        recipe.put("entity", entity);
+        return this;
+    }
+
+    public interval(value as int) {
+        recipe.put("interval", value);
         return this;
     }
 }

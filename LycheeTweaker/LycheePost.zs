@@ -73,9 +73,7 @@ public class LycheePost {
 }
 
 public class LycheePosts {
-    public static dropItem(stack as IItemStack) as LycheePost {
-        return new LycheePost("drop_item", DataConvertUtils.convertItemStack(stack));
-    }
+    public static dropItem(stack as IItemStack) as LycheePost => new LycheePost("drop_item", DataConvertUtils.convertItemStack(stack));
 
     public static placeBlock(block as LycheeBlock, offset as BlockPos = new BlockPos(0, 0, 0)) as LycheePost {
         return new LycheePost("place", {
@@ -94,11 +92,7 @@ public class LycheePosts {
         });
     }
 
-    public static dropXp(xp as int) as LycheePost {
-        return new LycheePost("drop_xp", {
-            "xp": xp
-        });
-    }
+    public static dropXp(xp as int) as LycheePost => new LycheePost("drop_xp", { "xp" : xp });
 
     public static random(entries as LycheePost[], min as int = 0, max as int = 1, emptyWeight as int = 0) as LycheePost {
         var entryList = new List<IData>();
@@ -117,11 +111,8 @@ public class LycheePosts {
 
     public static preventDefault() as LycheePost => new LycheePost("prevent_default");
 
-    public static damageItem(damage as int = 1) as LycheePost {
-        return new LycheePost("damage_item", {
-            "damage": damage
-        });
-    }
+    public static damageItem(damage as int = 1) as LycheePost => new LycheePost("damage_item", { "damage" : damage });
+
     /*
         hurt method has been removed in 1.21.1. You need to use the /damage command instead.
         hurt方法在1.21.1中已经被删除，你需要使用/damage命令来代替
@@ -133,11 +124,7 @@ public class LycheePosts {
     //     return new LycheePost("hurt",map);
     // }
 
-    public static anvilDamageChance(chance as double) as LycheePost {
-        return new LycheePost("anvil_damage_chance", {
-            "chance": chance
-        });
-    }
+    public static anvilDamageChance(chance as double) as LycheePost => new LycheePost("anvil_damage_chance", { "chance" : chance });
 
     /*
         blockInteraction can inputs "keep" | "destroy" | "destroy_with_decay" or LycheeEnum
@@ -179,19 +166,13 @@ public class LycheePosts {
         });
     }
 
-    public static delay(time as double) as LycheePost => new LycheePost("delay",{
-        "s": time
-    });
+    public static delay(time as double) as LycheePost => new LycheePost("delay",{ "s" : time });
 
-    public static addItemCoolDown(time as double) as LycheePost => new LycheePost("add_item_cooldown",{
-        "s": time
-    });
+    public static addItemCoolDown(time as double) as LycheePost => new LycheePost("add_item_cooldown",{ "s" : time });
 
     public static exit() as LycheePost => new LycheePost("exit");
 
-    public static moveTowardsFace(num as double = 1.0) as LycheePost => new LycheePost("move_towards_face", {
-        "factor": num
-    });
+    public static moveTowardsFace(num as double = 1.0) as LycheePost => new LycheePost("move_towards_face", { "factor" : num});
 
     public static cycleStateProperty(block as LycheeBlock, property as string, offset as BlockPos = new BlockPos(0,0,0), reversed as bool = false) as LycheePost => new LycheePost("cycle_state_property", {
         "block": block,
@@ -203,6 +184,8 @@ public class LycheePosts {
     });
 
     public static setItem(stack as IItemStack) as LycheePost => new LycheePost("set_item", DataConvertUtils.convertItemStack(stack));
+
+    public static setBlock(block as LycheeBlock) as LycheePost => new LycheePost("set_block", { "block" : block });
 
     public static move(x as double, y as double, z as double) as LycheePost {
         var list as ListData = new ListData();
