@@ -187,11 +187,14 @@ public class LycheePosts {
 
     public static setBlock(block as LycheeBlock) as LycheePost => new LycheePost("set_block", { "block" : block });
 
-    public static move(x as double, y as double, z as double) as LycheePost {
+    public static move(x as double, y as double, z as double, with as string = "") as LycheePost {
         var list as ListData = new ListData();
+        var mapData as MapData = new MapData();
         list.add(x);
         list.add(y);
         list.add(z);
+        mapData.put("offset", list);
+        if (with != "") mapData.put("with",with);
         return new LycheePost("move",{"offset":list});
     }
 

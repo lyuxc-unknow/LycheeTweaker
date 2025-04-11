@@ -35,30 +35,6 @@ public class LycheeTags {
     }
 
     /*
-        Add the lychee:item_deploding_catalysts tag to the item, which allows the item to be a catalyst synthesized by explosion in XEI (i.e. the item in the upper left corner of the JEI interface)
-        为物品添加 lychee:item_exploding_catalysts 标签，该标签允许物品为XEI中物品爆破合成的催化剂（即JEI界面左上角的物品）
-    */
-    public static itemExplodingCatalysts(ingredient as IIngredient) as void{
-        var itemList = new List<IItemStack>();
-        for item in ingredient.items {
-            itemList.add(item);
-        }
-        <tag:item:lychee:item_exploding_catalysts>.add(itemList);
-    }
-
-    /*
-        Add the lychee:block_deploding_catalysts tag to the item, which allows the item to be a catalyst synthesized by block explosion in XEI (i.e. the item in the upper left corner of the JEI interface)
-        为物品添加 lychee:block_exploding_catalysts 标签，该标签允许物品为XEI中方块爆破合成的催化剂（即JEI界面左上角的物品）
-    */
-    public static blockExplodingCatalysts(ingredient as IIngredient) as void{
-        var itemList = new List<IItemStack>();
-        for item in ingredient.items {
-            itemList.add(item);
-        }
-        <tag:item:lychee:block_exploding_catalysts>.add(itemList);
-    }
-
-    /*
         Add the lychee:lightning_immune tag to the entity, which allows the entity to be protected from lightning damage
         为实体添加 lychee:lightning_immune 标签，该标签允许实体不会受到闪电的伤害
     */

@@ -202,9 +202,12 @@ public class LycheeConditions {
         "direction": dir
     });
 
-    public static lootParameter(key as string) as LycheeCondition => new LycheeCondition("check_param", {
-        "key": key
-    });
+    public static lootParameter(key as string,loot as string = "", isCreate as bool = false) as LycheeCondition => {
+        var map as MapData = {"key": key};
+        if (loot != "") map.put("loot",loot);
+        if (isCreate) map.put("create", isCreate);
+        return new LycheeCondition("param", map); 
+    }
 
     // can_see_sky was removed in latest version of Lychee
     // can_see_sky参数再最新版Lychee中已被移除
